@@ -32,7 +32,7 @@
 #       prints a summary of the results using results_dic and results_stats_dic
 # 
 def print_results(results_dic, results_stats_dic, model, 
-                  print_incorrect_dogs = False, print_incorrect_breed = False):
+                  print_incorrect_dogs = True, print_incorrect_breed = True):
     """
     Prints summary results on the classification and then prints incorrectly 
     classified dogs and incorrectly classified dog breeds if user indicates 
@@ -68,3 +68,17 @@ def print_results(results_dic, results_stats_dic, model,
     print ("Number of dog images: ", results_stats_dic['n_dogs_img'])
     print ("Number of non-dog images: ", results_stats_dic['n_notdogs_img'])
     print ("Statisctics of the model: correctly identified dogs - {}%\n, correctly identified non-dogs - {}%\n, correctly identified breed of dog - {}%,".format(results_stats_dic['pct_correct_dogs'],  results_stats_dic['pct_correct_notdogs'], results_stats_dic['pct_correct_breed']))
+    if ((print_incorrect_dogs == True) and (results_stats_dic['n_correct_dogs'] + results_stats_dic['n_correct_notdogs'] != results_stats_dic['n_images'])):
+        print ("Incorrectly identified dogs images:")
+        for key in results_dic:
+            if sum(results_dic[key][3:]) == 1:
+                print(key, results_dic[key])
+        print ("-----------------")
+    
+    if print_incorrect_breed == True:
+        print ("Entering to print_incorrect_breed if")
+        for key in results_dic:
+            if sum(results_dic[key][3:]) == 1:
+                print(key, results_dic[key])
+        print ("-----------------")
+        
