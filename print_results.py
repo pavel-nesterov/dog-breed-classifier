@@ -4,7 +4,7 @@
 #                                                                             
 # PROGRAMMER: Pavel Nesterov
 # DATE CREATED: 19-12-2019
-# REVISED DATE: 
+# REVISED DATE: 28-12-2019
 # PURPOSE: Create a function print_results that prints the results statistics
 #          from the results statistics dictionary (results_stats_dic). It 
 #          should also allow the user to be able to print out cases of misclassified
@@ -62,6 +62,7 @@ def print_results(results_dic, results_stats_dic, model,
     Returns:
            None - simply printing results.
     """    
+    print ("Entering to print_results.py")
     print ("Model used: {}".format(model)) 
     print ("Number of images: ", results_stats_dic['n_images'])
     print ("Number of dog images: ", results_stats_dic['n_dogs_img'])
