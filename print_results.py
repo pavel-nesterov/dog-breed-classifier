@@ -68,6 +68,9 @@ def print_results(results_dic, results_stats_dic, model,
     print ("Number of dog images: ", results_stats_dic['n_dogs_img'])
     print ("Number of non-dog images: ", results_stats_dic['n_notdogs_img'])
     print ("Statisctics of the model: correctly identified dogs - {}%\n, correctly identified non-dogs - {}%\n, correctly identified breed of dog - {}%,".format(results_stats_dic['pct_correct_dogs'],  results_stats_dic['pct_correct_notdogs'], results_stats_dic['pct_correct_breed']))
+   
+
+
     if ((print_incorrect_dogs == True) and (results_stats_dic['n_correct_dogs'] + results_stats_dic['n_correct_notdogs'] != results_stats_dic['n_images'])):
         print ("Incorrectly identified dogs images:")
         for key in results_dic:
@@ -75,10 +78,10 @@ def print_results(results_dic, results_stats_dic, model,
                 print(key, results_dic[key])
         print ("-----------------")
     
-    if print_incorrect_breed == True:
+    if print_incorrect_breed == True and results_stats_dic['n_correct_dogs'] != results_stats_dic['n_correct_breed']:
         print ("Entering to print_incorrect_breed if")
         for key in results_dic:
-            if sum(results_dic[key][3:]) == 1:
+            if sum(results_dic[key][3:]) == 2 and results_dic[key][2] == 0:
                 print(key, results_dic[key])
         print ("-----------------")
         
